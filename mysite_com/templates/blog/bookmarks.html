@@ -1,0 +1,35 @@
+{% extends 'blog/base.html' %}
+
+{% block main-links %}
+	
+	{% for link in links %}
+		<div id="all-links">
+                        <div class="bookmark"><span class="bookmark-title"><a href= {{ link.url }}>{{link.title}}</a></span>
+                        <br/>
+                        <span class="tags">
+                        {% if link.etags.count %}
+                           <i> {% for tag in link.etags %}
+                                <a href={% url links_tag_page tag.name %}>{{ tag.name|upper }}{% if not forloop.last %}, {% endif %}</a>
+                            {% endfor %}</i>
+                        {% endif %} | 
+                        
+                        <span class="bookmark-desc tags">{{link.description|safe}}</span>
+			</div>
+
+                        <br/>
+                        {% if not forloop.last %}
+                                <div class="underline"></div>
+                        {% endif %}
+                        <br/>
+		</div>
+	{% endfor %}
+{% endblock %}
+<!--
+{% block bookmark-tags %}
+	<div class="bookmark-tags">
+		{% for tag in links_tag_list %}
+		<li><a href={% url links_tag_page tag.name %}>{{ tag.name }}</a></li>
+		{% endfor %}
+	</div>
+{% endblock %}
+-->

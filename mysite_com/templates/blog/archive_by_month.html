@@ -1,0 +1,49 @@
+{% extends 'blog/blog_base.html' %}
+
+{% load pagination_tags %}
+
+{% load disqus_tags %}
+{% disqus_dev %}
+
+{% block main-content %}
+
+	<h3> Blog Archive for {{ month|capfirst }} {{ year }} : </h3>
+	<br/>
+
+
+	{% for entry in entries %}
+
+		<div id="all-entries">
+			<h3><a href= {{ entry.get_absolute_url }}> {{entry.title}} </a></h3>
+			<br/>
+			{{entry.pub_date}} 
+			<br/><br/>
+			{{entry.excerpt}}
+
+			<br/><br/>
+
+			{% if entry.etags.count %}
+	        	<p>Tags: 
+	            {% for tag in entry.etags %}
+	                <a href={% url blog_tag_page tag.name %} class="label">{{ tag.name }}</a>
+	            {% endfor %}
+		        </p>
+		    {% endif %}
+
+		    {% load disqus_tags %}
+
+		    <a href="{{ entry.get_absolute_url }}#disqus_thread" data-disqus-identifier="{{ entry.slug }}">View Comments</a>
+			{% disqus_num_replies %}
+
+		    <br/>
+		        <ul class="nav nav-list">
+			    <li class="divider"></li>
+			    </ul>
+		    <br/>
+
+		</div>
+
+	{% endfor %}
+
+
+{% endblock %}

@@ -1,0 +1,184 @@
+<html>
+
+	<head>
+		<title>Reema Chugani</title>
+		<link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css" />	
+		<style type="text/css">
+	      body {
+		background-color: #FCFCFC;
+	      	background-repeat: repeat;
+	        color: #333332;
+		font-size: 16px;
+		font-weight: 250;
+		padding-top: 20px;
+	        padding-bottom: 30px;
+	      }
+		
+		.header{
+                 font-size: 26px;
+                 line-height: 100%;
+                 font-weight: 600;
+                 }
+		
+		h2{
+		 font-size: 26px;
+		}
+
+                h3{
+                 font-size: 22px;
+                 }
+
+		.banner a{
+		 color: #B9B8B8;
+		 text-decoration: none;
+		 border-bottom: 1px solid #B9B8B8;
+		}
+		.banner a:hover{
+		 color: #FFFFFF;
+		 text-decoration: none;
+		 border-bottom: 1px solid #FFFFFF;
+		}
+	
+		a{
+                 color: #302226;
+                 text-decoration: none;
+                }
+		a:active{
+		 color: #32B67A;
+		 text-decoration: none;
+		}
+                a:hover{
+                 color: #32B67A;
+                 text-decoration: none;
+                }
+
+		.body a{
+		 color: #32B67A;
+		 border-bottom: 1px dotted #B9B8B8;
+		}
+		
+		.body a:hover{
+		 border-bottom: 1px dotted #302226;
+		}
+		
+		.date, .tags{
+		 color: #929291;
+		 font-size: 14px;
+		 font-weight: 100;
+		}
+		
+		.tags a{
+		 color: #929291;
+		}
+				
+		.tags a:hover{
+		 color: #32B67A;
+		 border-bottom: 1px dotted #929291;
+		}
+		
+		.categories-header{
+		 font-size:22px;
+		 line-height:175%;
+		}
+	
+		.underline{
+		 border-bottom: 1px solid #B9B8B8;
+		}
+		
+		.bookmark-title{
+		 font-size: 16px;
+		 font-weight: bold;
+		}
+		
+		.bookmark-desc{
+		 color: #555555;
+		}
+		
+	/*	.bookmark-tags a{
+                 text-decoration: none;
+                }
+
+                .bookmark-tags a:hover{
+                 text-decoration: none;
+		} */
+		
+		::-moz-selection{
+		 background-color: #9CFFD3;
+		}
+		::selection{
+		 background-color: #9CFFD3;
+		}
+	    </style>
+	    <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+
+	    <script type="text/javascript" src="//use.typekit.net/aln7xgn.js"></script>
+	    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+	</head>
+
+    <body>
+	 <div class="container-fluid">
+
+		<!-- BANNER -->
+		<div class="banner" style="width:100%; padding:30px 0; background-color: #333332; color:#E3E3E3;">
+		
+			<div align="center"> <img src="/static/images/reema_90.jpeg" width="100px" height="100px" class="img-circle"/> </div>
+			
+			<br/>
+	
+			<div style="text-align: center;">
+
+				<div><b style="font-size:22px;">Reema Chugani </b> <br/><i>Founder at FABRICK.</i>  <br/>
+				<a href="https://github.com/reemachugani"style="border-bottom:none;">Github</a>&nbsp; | &nbsp;<a href="https://twitter.com/reemachugani" style="border-bottom:none;">Twitter</a></div>
+
+				<br/>
+
+				<div><a href="">About Me</a> &nbsp;&nbsp;&nbsp; <a href="">My Projects</a></div>
+
+			</div>
+		</div>
+
+		<!-- MAIN-CONTENT, BLOG-ENTRIES, LINKS -->	
+                <div class="row-fluid">
+			<div class="span2"></div>
+
+			<div id="main-links" class="span6" style="padding-top:3%;">
+				{% block main-links %} {% endblock %}
+                        </div>
+
+			<div id="categories" class="span2" style="text-align:right; padding-top:2%;">
+	        	        <ul class="unstyled">
+				<li class="categories-header">Categories</li>
+				<li><a href={% url blog_home %}>All</a></li>
+        	        	{% for tag in tag_list %}
+		                        <li><a href={% url blog_tag_page tag.name %} style="text-decoration: none;">{{tag.name|capfirst}}</a></li>
+				<!-- class="tag-cloud-{{tag.weight}} {{tag.count}} -->
+		                {% endfor %}
+				</ul>
+				<br/>
+				<ul class="unstyled">
+				<li class="categories-header">Bookmarks</li>
+				<li><a href={% url links_home %}>All</a></li>
+				<!--{% block bookmark-tags %} {% endblock %}-->
+				 <div class="bookmark-tags">
+              			 {% for tag in links_tag_list %}
+               				 <li><a href={% url links_tag_page tag.name %}>{{ tag.name|capfirst }}</a></li>
+               			 {% endfor %}
+       				 </div>
+                		</ul>
+			</div>
+
+			<div class="span2"></div>
+            	</div>
+		
+	   </div>
+	
+          <div class="underline"></div>
+			
+          <footer id="site-footer" class="date">
+	      <p style="text-align:right; color:rgb(153, 153, 153);">&copy; Reema Chugani 2012-2013 | Powered by Django &nbsp; &nbsp;</p>       
+	  </footer>
+		
+	</body>
+</html>
+

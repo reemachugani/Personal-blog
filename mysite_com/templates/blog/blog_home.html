@@ -1,0 +1,52 @@
+{% extends 'blog/base.html' %}
+
+{% load pagination_tags %}
+
+{% load disqus_tags %}
+{% disqus_dev %}
+
+{% block main-links %}
+
+
+	{% for entry in entries %}
+
+		<div id="all-entries">
+			<div class="header"><a href= {{ entry.get_absolute_url }}>{{entry.title}}</a>
+			<br/>
+			<span class="date">{{entry.pub_date|date}} | </span>
+			<span class="tags">in 
+			{% if entry.etags.count %}
+	                   <i> {% for tag in entry.etags %}
+        	                <a href={% url blog_tag_page tag.name %}>{{ tag.name|upper }}{% if not forloop.last %}, {% endif %}</a>
+			    {% endfor %}</i>
+                        {% endif %}
+			</div>
+			<p/>		
+			<div class="body">{{entry.excerpt|safe}}</div>
+			
+			<br/>	
+			{% if not forloop.last %}
+				<div class="underline"></div>
+			{% endif %}
+			<br/>
+
+		<!--	{% if entry.etags.count %}
+	        	<p><b>Tags</b> : 
+	            {% for tag in entry.etags %}
+	                <a href={% url blog_tag_page tag.name %} class="label">{{ tag.name }}</a>	                
+	            {% endfor %}
+		        </p>
+		    {% endif %}
+
+		    {% load disqus_tags %}
+
+		    <a href="{{ entry.get_absolute_url }}#disqus_thread" data-disqus-identifier="{{ entry.slug }}">View Comments</a>
+			{% disqus_num_replies %}
+
+		    <br/> -->
+		</div>
+
+	{% endfor %}
+
+
+{% endblock %}

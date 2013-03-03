@@ -1,0 +1,113 @@
+<html>
+
+	<head>
+		<title>Reema Chugani</title>
+                <link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css" />      
+                <style type="text/css">
+		
+		body {
+                background-color:#FCFCFC;
+                background-repeat: repeat;
+                color: #333332;
+                font-size: 16px;
+                font-weight: 250;
+                padding-top: 20px;
+                padding-bottom: 30px;
+              }
+
+                .header{
+                 font-size: 26px;
+                 line-height: 120%;
+                 font-weight: 600;
+                 }
+
+                h2{
+                 font-size: 26px;
+                }
+
+                h3{
+                 font-size: 22px;
+                 }
+
+                .banner a{
+                 color: #32B67A;
+                 text-decoration: none;
+                 border-bottom:none;
+                }
+                .banner a:hover{
+		 color: #32B67A;
+                 text-decoration: none;
+                 border-bottom: 1px dotted #333332;
+                }
+
+                a{
+                 color: #32B67A;
+		 text-decoration: none;
+                 border-bottom: 1px dotted #B9B8B8;
+                }
+
+                a:hover{
+		 color: #32B67A;
+		 text-decoration: none;
+                 border-bottom: 1px dotted #302226;
+                }
+
+                .date, .tags{
+                 color: #929291;
+                 font-size: 14px;
+                 font-weight: 100;
+                }
+
+                .tags a{
+                 color: #929291;
+		 border-bottom: none;
+                }
+
+                .tags a:hover{
+                 color: #32B67A;
+                 border-bottom: 1px dotted #929291;
+                }
+
+                .underline{
+                 border-bottom: 1px solid #B9B8B8;
+                }
+
+		::-moz-selection{
+                 background-color: #9CFFD3;
+                }
+                ::selection{
+                 background-color: #9CFFD3;
+                }
+
+            </style>
+            <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+
+            <script type="text/javascript" src="//use.typekit.net/aln7xgn.js"></script>
+            <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+	</head>
+	
+	<body>
+
+	    <div class="container-fluid">
+
+                <!-- BANNER -->
+                <div class="banner row-fluid" style="width:100%; height:10%; color:#333332; padding:0 0 10px 0; border-bottom:1px solid B9B9B8;">
+
+                                <div style="text-align:center;"><a href={% url blog_home %} style="font-size:26px; line-height:150%; font-weight:500;">Reema Chugani</a><br/> Enhancing lives byte by byte at <a href="https://twitter.com/fabricklabs">Fabrick Labs</a>. Follow me on <a href="https://twitter.com/reemachugani">Twitter</a>.<br/></div>
+
+                </div>
+		
+		<!-- MAIN CONTENT -->
+		<div class="main-content row-fluid">
+			<div class="span3"></div>
+			<div class="span6" style="padding-top:2%;">
+				{% block main-content %} {% endblock %}
+			</div>
+			<div class="span3"></div>
+		</div>
+
+	   </div>	
+	</body>
+
+</html>

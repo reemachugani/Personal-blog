@@ -1,0 +1,25 @@
+{% extends 'articles/article_base.html' %}
+
+{% load disqus_tags %}
+
+{% block main-content %}
+
+        <div class="header"> {{entry.title}}
+	<br/>
+        <span class="date">{{entry.pub_date|date}} | </span>
+        <span class="tags">in
+        {% if entry.etags.count %}
+	        <i> {% for tag in entry.etags %}
+		        <a href={% url blog_tag_page tag.name %}>{{ tag.name|upper }}{% if not forloop.last %}, {% endif %}</a>
+        	{% endfor %}</i>
+        {% endif %}</span>
+        </div>
+        <p/>
+        <span class="body">{{entry.body|safe}}</span>
+    <br/>
+
+    {% set_disqus_identifier entry.slug %}
+
+    {% disqus_show_comments %}
+
+{% endblock %}
